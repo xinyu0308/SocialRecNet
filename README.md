@@ -85,4 +85,8 @@ CUDA_VISIBLE_DEVICES=1 python SocialRecNet/inference.py \
     --peft_model_id "path to your model/llm" \
     --llama_model "path to llama model"
 ```
-
+### 4. Evaluate result
+To get the final result, run the following script:
+```bash
+python Evaluate/evaluate_by_kid.py
+```
