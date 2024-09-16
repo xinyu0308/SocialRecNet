@@ -20,7 +20,7 @@ CUDA_VISIBLE_DEVICES=1 WANDB_MODE=offline python -m torch.distributed.run  --mas
     --output_dir ${SAVE_ROOT} \
     --manifest_files "your_training.jsonl" \
     --remove_unused_columns False \
-    --seed 1 \c
+    --seed 1 \
     --do_train True \
     \
     --learning_rate 5e-5 \
