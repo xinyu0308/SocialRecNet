@@ -7,7 +7,7 @@ import logging
 from transformers import LlamaForCausalLM
 from transformers import LlamaTokenizer
 from transformers import GenerationConfig
-from src.modeling_SocialRecNet import BlspModel
+from modeling_SocialRecNet import SocialRecNet
 from peft import LoraConfig, get_peft_model
 from peft import PeftModel, PeftConfig
 from transformers.deepspeed import is_deepspeed_zero3_enabled
@@ -112,7 +112,7 @@ def main():
     args = parser.parse_args()
 
     tokenizer = LlamaTokenizer.from_pretrained(args.llama_model)
-    model = BlspModel.from_pretrained(args.llama_model)
+    model = SocialRecNet.from_pretrained(args.llama_model)
     
     generation_config.update(
         **{
