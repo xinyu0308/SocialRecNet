@@ -30,7 +30,8 @@ jsonl_train_output_path: Path to save preprocessed training data.
 jsonl_test_output_path: Path to save preprocessed test data.
 Optional: Modify turns_per_segment, label, and speaker as needed.
 ```bash
-python prepare.py
+cd Data_Prepare
+python generate_jsonl.py
 ```
 The processed data will be in the following format:
 ```json
