@@ -78,8 +78,6 @@ class Conv1dSubsampler(nn.Module):
         _, _, out_seq_len = x.size()
         x = x.transpose(1, 2).transpose(0, 1).contiguous()  # -> T x B x (C x D)
         return x, self.get_out_seq_lens_tensor(src_lengths)
-device = 'cpu'
-
 
 class CrossAttention(nn.Module):
     def __init__(self, embed_dim, num_heads):
@@ -97,20 +95,16 @@ class CrossAttention(nn.Module):
         assert embedding_B.size(-1) == self.multihead_attention.embed_dim, \
             f"Embedding dimension of B ({embedding_B.size(-1)}) does not match the model's expected dimension ({self.multihead_attention.embed_dim})"
 
-        # 創建 Q, K, V
+        # create Q, K, V
         query = self.linear_q(embedding_A)  # shape: [batch_size, seq_len_A, dim]
         key = self.linear_k(embedding_B)    # shape: [batch_size, seq_len_B, dim]
         value = self.linear_v(embedding_B)  # shape: [batch_size, seq_len_B, dim]
 
-        # 轉置輸入以符合 PyTorch MultiheadAttention 的要求
         query = query.transpose(0, 1)  # shape: [seq_len_A, batch_size, dim]
         key = key.transpose(0, 1)      # shape: [seq_len_B, batch_size, dim]
         value = value.transpose(0, 1)  # shape: [seq_len_B, batch_size, dim]
 
-        # 計算 multihead cross attention
         attention_output, _ = self.multihead_attention(query, key, value)  # shape: [seq_len_A, batch_size, dim]
-
-        # 將輸出轉置回原來的形狀
         attention_output = attention_output.transpose(0, 1)  # shape: [batch_size, seq_len_A, dim]
         return attention_output
 # Model parameters
@@ -136,9 +130,8 @@ class Adapter(nn.Module):
         return residual + x
 
 class SocialRecNet(PreTrainedModel):
-#     config_class = SocialRecNet
-# Config
-#     base_model_prefix = "blsp"
+    config_class = SocialRecNetConfig
+    base_model_prefix = "SocialRecNet"
 
     def __init__(self, config: SocialRecNetConfig):
         super().__init__(config)
@@ -241,7 +234,7 @@ class SocialRecNet(PreTrainedModel):
         self.subsampler_final=self.subsampler_final.to(torch.float32)
         self.subsampler_final=self.subsampler_final.to(turn_embeds.device)
         turn_lengths = torch.tensor([turn_embeds.size(1)] * turn_embeds.size(0), device=turn_embeds.device)  # B x T
-        turn_embeds, turn_lengths = self.subsampler(turn_embeds, turn_lengths)
+        turn_embeds, turn_lengths = self.subsampler_final(turn_embeds, turn_lengths)
         turn_embeds = turn_embeds.transpose(0,1) 
         self.final_adapter=self.final_adapter.to(torch.float32)
         self.final_adapter=self.final_adapter.to(turn_embeds.device)
@@ -375,7 +368,7 @@ class SocialRecNet(PreTrainedModel):
         self.subsampler_final=self.subsampler_final.to(torch.float32)
         self.subsampler_final=self.subsampler_final.to(turn_embeds.device)
         turn_lengths = torch.tensor([turn_embeds.size(1)] * turn_embeds.size(0), device=turn_embeds.device)  # B x T
-        turn_embeds, turn_lengths = self.subsampler(turn_embeds, turn_lengths)
+        turn_embeds, turn_lengths = self.subsampler_final(turn_embeds, turn_lengths)
         turn_embeds = turn_embeds.transpose(0,1) 
         self.final_adapter=self.final_adapter.to(torch.float32)
         self.final_adapter=self.final_adapter.to(turn_embeds.device)
