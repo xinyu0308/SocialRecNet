@@ -77,7 +77,7 @@ def main():
         help="Path to the output file", 
     )
     parser.add_argument(
-        "--SocialRecNet_pt", type=str, default="",
+        "--SocialRecNet", type=str, default="",
         help="Path to the SocialRecNet model", 
     )
     # Arguments for generation
@@ -111,8 +111,8 @@ def main():
     )
     args = parser.parse_args()
 
-    tokenizer = LlamaTokenizer.from_pretrained(args.llama_model)
-    model = SocialRecNet.from_pretrained(args.llama_model)
+    tokenizer = LlamaTokenizer.from_pretrained(args.SocialRecNet)
+    model = SocialRecNet.from_pretrained(args.SocialRecNet)
     
     generation_config.update(
         **{
