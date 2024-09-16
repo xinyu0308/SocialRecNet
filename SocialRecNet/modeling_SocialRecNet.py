@@ -9,7 +9,7 @@ from transformers import PreTrainedModel, LlamaForCausalLM
 from transformers import LlamaConfig
 import torch.nn.functional as F
 try:
-    from .configuration import SocialRecNetConfig
+    from configuration import SocialRecNetConfig
 except:
     from configuration import SocialRecNetConfig
 
