@@ -34,7 +34,7 @@ def read_jsonl(file_path):
 def parse_scores(score_string):
     """Parse score strings into a dictionary with float values."""
     score_dict = {}
-    valid_keys = {'BB6', 'BB7', 'BB8', 'BB9', 'BB10', 'AA4', 'AA7', 'AA8', 'ADOS_class', 'ADOS_S'}
+    valid_keys = {'CONV', 'QSOV', 'QSR','ARSC', 'QQR'}
     try:
         if '</s>' in score_string:
             score_parts = score_string.split('</s>')
@@ -103,7 +103,7 @@ def calculate_medians(all_scores):
 def compute_metrics(averages_or_medians, metric_name):
     """Compute evaluation metrics (MAE, Spearman, Pearson, CCC) for each score."""
     results = []
-    all_keys = ['AA4', 'AA7', 'AA8', 'BB6', 'BB7', 'BB8', 'BB9', 'BB10', 'ADOS_class', 'ADOS_S']
+    all_keys = ['CONV', 'QSOV', 'QSR','ARSC', 'QQR']
     
     for key in all_keys:
         response_values = []
@@ -142,17 +142,11 @@ all_scores = extract_all_scores(data_df)
 averages = calculate_averages(all_scores)
 average_results_df = compute_metrics(averages, 'Average')
 
-# Calculate median scores
-medians = calculate_medians(all_scores)
-median_results_df = compute_metrics(medians, 'Median')
-
 # Get the input file name
 file_name = os.path.splitext(os.path.basename(file_path))[0]
 
 # Save results to CSV files
 average_results_df.to_csv(f'{file_name}_average_case_result.csv', index=False)
-median_results_df.to_csv(f'{file_name}_median_case_result.csv', index=False)
 
 # Print results
 print(average_results_df)
-print(median_results_df)
