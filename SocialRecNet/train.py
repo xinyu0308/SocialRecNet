@@ -19,9 +19,9 @@ from transformers import (
 from transformers.trainer_utils import get_last_checkpoint, is_main_process
 from transformers import LlamaTokenizer, LlamaForCausalLM, LlamaConfig
 from transformers.deepspeed import is_deepspeed_zero3_enabled
-from src.mulitimodal_data_prepare import load_speech_text_paired_dataset, SpeechTextPairedDataCollator
-from src.modeling_SocialRecNet import SocialRecNet
-from src.configuration import SocialRecNetConfig
+from mulitimodal_data_prepare import load_speech_text_paired_dataset, SpeechTextPairedDataCollator
+from modeling_SocialRecNet import SocialRecNet
+from configuration import SocialRecNetConfig
 from peft import LoraConfig, get_peft_model
 import json
 
