@@ -103,7 +103,7 @@ def calculate_medians(all_scores):
 def compute_metrics(averages_or_medians, metric_name):
     """Compute evaluation metrics (MAE, Spearman, Pearson, CCC) for each score."""
     results = []
-    all_keys = ['CONV', 'QSOV', 'QSR','ARSC', 'QQR']
+    all_keys = ['CONV', 'QSOV', 'QSR', 'ARSC', 'OQR']
     
     for key in all_keys:
         response_values = []
