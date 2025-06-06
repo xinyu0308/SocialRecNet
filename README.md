@@ -2,16 +2,15 @@
 
 ## Overview
 
-![SocialRecNet Framework](socialrecnet_framework.png)
+![SocialRecNet Framework](Framework.jpg)
 *Overview of SocialRecNet framework: The left section shows conversational turn units and contextual segments. The middle section highlights the Interlocutor Dynamics Extractor (IDE), which uses cross-attention to compute reciprocal embeddings for speech and text. The right section depicts how these embeddings are processed through Modality Fusion Layer (MFL), Segment-Level Aggregation Layer (SLA), and a LoRA-adapted LLM to predict ADOS scores.*
-<img src="./socialrecnet_framework.png">
 
 ## Abstract
 
 Accurate assessment of social reciprocity is crucial for early diagnosis and intervention in Autism Spectrum Disorder (ASD). Traditional methods, often relying on unimodal data or lacking in cross-modal alignment, do not fully capture the complexity of social reciprocity. To address these limitations, we developed SocialRecNet, a novel Multimodal Large Language Model (MLLM) utilizing the Autism Diagnostic Observation Schedule (ADOS) dataset. SocialRecNet integrates conversational speech and text with the textual reasoning capabilities of LLMs to analyze social reciprocity across multiple dimensions. By effectively aligning speech and text, enhanced by properly designed prompts, SocialRecNet achieves an average Pearson correlation of 0.711 in predicting ADOS scores, marking a significant improvement of approximately 26.24% over the best-performing baseline method. This state of the art framework not only improves the prediction of social reciprocity scores but also provides deeper insights into ASD diagnosis and intervention strategies.
 
 ## Prompt Engineering  
-![Prompt Engineering](SocialRecNet_prompt.jpg)
+![Prompt Engineering](Prompt_Engineering.jpg)
 
 ## Getting Started
 
