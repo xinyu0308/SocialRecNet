@@ -4,8 +4,6 @@
 
 ![SocialRecNet Framework](Framework.jpg)
 *Overview of SocialRecNet framework: The left section shows conversational turn units and contextual segments. The middle section highlights the Interlocutor Dynamics Extractor (IDE), which uses cross-attention to compute reciprocal embeddings for speech and text. The right section depicts how these embeddings are processed through Modality Fusion Layer (MFL), Segment-Level Aggregation Layer (SLA), and a LoRA-adapted LLM to predict ADOS scores.*
-<img src="Framework.jpg" width="600">
-
 
 ## Abstract
 
