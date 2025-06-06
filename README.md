@@ -94,3 +94,16 @@ To get the final result, run the following script:
 ```bash
 python Evaluate/evaluate_by_kid.py
 ```
+### Citation
+
+If you use SocialRecNet or find this work helpful, please cite:
+```
+@inproceedings{chen2025socialrecnet,
+  title={SocialRecNet: A Multimodal LLM-Based Framework for Assessing Social Reciprocity in Autism Spectrum Disorder},
+  author={Chen, Xin-Yu and Chen, Yu-Ming and Chen, Chin-Po and Su, Bo-Hao and Gau, Susan Shur-Fen and Lee, Chi-Chun},
+  booktitle={ICASSP 2025-2025 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+  pages={1--5},
+  year={2025},
+  organization={IEEE}
+}
+```
