@@ -34,7 +34,7 @@ def read_jsonl(file_path):
 def parse_scores(score_string):
     """Parse score strings into a dictionary with float values."""
     score_dict = {}
-    valid_keys = {'CONV', 'QSOV', 'QSR','ARSC', 'QQR'}
+    valid_keys = {'CONV', 'QSOV', 'QSR','ARSC', 'OQR'}
     try:
         if '</s>' in score_string:
             score_parts = score_string.split('</s>')
