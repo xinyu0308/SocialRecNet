@@ -1,6 +1,6 @@
 # SocialRecNet: A Multimodal LLM-Based Framework for Assessing Social Reciprocity in Autism Spectrum Disorder
 
-[📄 Read our paper]([https://ieeexplore.ieee.org/document/xxxxxxx](https://ieeexplore.ieee.org/document/10888811))
+[📄 Read our paper](https://ieeexplore.ieee.org/document/10888811)
 
 ## Overview
 
